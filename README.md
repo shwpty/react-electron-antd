@@ -1,66 +1,102 @@
-## Available Scripts
+## 项目技术栈
 
-In the project directory, you can run:
+node18.17.0 + react@18.2.0 + electron@27.0.2 + webpack@5.64.4 + http2@3.3.7 + less@4.2.0 + antd@5.10.2 + bootstrap@4.4.1
 
-### `npm start`
+## 项目运行
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+前提条件: node、npm、yarn安装
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+git clone --depth 1 https://github.com/xiaomantoua/react-electron-antd.git
 
-### `npm test`
+cd react-electron-antd  //进入项目目录
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+yarn install  //安装依赖，成功后项目路径下生成node_modules
 
-### `npm run build`
+yarn package  //编译及打包,成功后项目路径下生成build及dist,dist中包含安装包及免安装版本
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd server && node http2s.js  //服务器端开启，这里端口是本地的9090端口,可通过constants.js中更改
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+运行NodeManagement.exe
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 前提条件(运行前请看)
 
-### `npm run eject`
+### 1、node、npm环境的安装
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+js项目必须的工具，nodejs同时会安装npm，npm是js包管理器。
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+安装官网http://nodejs.cn/download/下载安装。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+验证安装是否成功：`node -v   npm -v`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+修改默认node_modules安装路径和node_cache缓存路径：
 
-## Learn More
+1、在nodejs目录下创建两个文件夹【node_global】和【node_cache】
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![image-20230915131710044](./assets/image-20230915131710044.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2、对两个文件夹设置所有权限
 
-### Code Splitting
+![image-20230915161158387](./assets/image-20230915161158387.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+之后cmd执行：
 
-### Analyzing the Bundle Size
+```
+npm config set prefix "D:\Nodejs\node_global"  //路径替换为node安装路径
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+npm config set cache "D:\Nodejs\node_cache"  //路径替换为node安装路径
+```
 
-### Making a Progressive Web App
+环境变量添加、镜像设置、安装cnpm（可选）
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 2、yarn安装
 
-### Advanced Configuration
+知识点：yarn和npm区别，包含第二节和第三节
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+yarn和npm一样是js包管理工具，用于管理JavaScript编写的软件包，**yarn可以弥补npm的一些缺陷**：
 
-### Deployment
+- 速度超快：Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。
+- 超级安全：在执行代码之前，Yarn 会通过算法校验每个安装包的完整性。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**只要知道，yarn是对npm的优化，现在更多的使用yarn**
 
-### `npm run build` fails to minify
+安装方法-全局安装：npm install -g yarn
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+验证是否成功：yarn -v 或者yarn --version
+
+### 3、yarn和npm命令对比
+
+|            npm             |                  yarn                   |
+| :------------------------: | :-------------------------------------: |
+|          npm init          |                yarn init                |
+|        npm init -y         |              yarn init -y               |
+|        npm install         |            yarn  //安装依赖             |
+|      npm install xxx       |              yarn add xxx               |
+|  npm install --global xxx  |  yarn global add xxx  //全局安装某模块  |
+|     npm uninstall xxx      |       yarn remove xxx  //卸载依赖       |
+|  npmm install xxx@版本号   |           yarn add xxx@版本号           |
+|   npm install xxx --save   |              yarn add xxx               |
+| npm install xxx --save-dev | yarn add xxx -dev  //仅开发环境安装依赖 |
+|     npm update --save      |              yarn upgrade               |
+|          npm run           |                yarn run                 |
+|        npm run xxx         |              yarn run xxx               |
+|        npm run dev         |                yarn dev                 |
+
+(注：自行开发时可以添加rimraf工具，快速删除文件夹)
+
+## 说明
+
+此项目为基于c++的nghttp2库的非加密服务器端搭建适配的react+electron桌面应用。可供学习react及electron，交流+qq: 374267655，请加备注
+
+**基本功能**
+
+- 与服务器直接支持基于http2协议的消息交互
+- 向服务器发起请求，根据响应消息展示集群节点状态等信息
+- 监听服务器端的server push，实现节点扩缩容过程的动态展示
+
+**技术点**
+
+- 在react组件中无法直接使用http2库，而fetch和axios等方法针对非加密的服务器端无法使用(也可能因为本人菜鸟一枚)...在electron主进程中使用nodejs的http2库，以及和渲染进程(react组件)通信的方式完成对服务器端的请求及响应处理(曲线救国...)
+- 对服务器端server push的处理，有参考[shumbo/node-http2-server-push-example: Send/receive HTTP/2 server push with Node.js (github.com)](https://github.com/shumbo/node-http2-server-push-example)
+

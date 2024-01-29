@@ -9,7 +9,7 @@
     "email": "secret@secret.com"
   },
   "build": {
-    "appId": "com.NodeManagement.swt",
+    "appId": "com.NodeManagement.happy",
     "productName": "NodeManagement",
     "copyright": "Copyright © 2023 ${author}",
     "win": {
