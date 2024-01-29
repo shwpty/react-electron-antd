@@ -34,11 +34,11 @@ js项目必须的工具，nodejs同时会安装npm，npm是js包管理器。
 
 1、在nodejs目录下创建两个文件夹【node_global】和【node_cache】
 
-![image-20230915131710044](./assets/image-20230915131710044.png)
+![image](https://github.com/xiaomantoua/img_resource/blob/main/react-electron-antd/image-20230915131710044.png)
 
 2、对两个文件夹设置所有权限
 
-![image-20230915161158387](./assets/image-20230915161158387.png)
+![image](https://github.com/xiaomantoua/img_resource/blob/main/react-electron-antd/image-20230915161158387.png)
 
 之后cmd执行：
 
